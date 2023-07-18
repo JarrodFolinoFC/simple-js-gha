@@ -1,8 +1,10 @@
-name: Node.js Package
+name: My First Github Action
 
 on:
-  release:
-    types: [created]
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   build:
@@ -12,4 +14,5 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - run: echo "Hello"
+      - run: npm install
+      - run: npm run test
